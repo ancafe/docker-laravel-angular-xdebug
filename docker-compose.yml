@@ -23,8 +23,8 @@ services:
   # Frontend Service
   frontend:
     build:
-      context: .
-      dockerfile: ./docker/frontend/Dockerfile
+      context: ./frontend
+      dockerfile: ../docker/frontend/Dockerfile
     container_name: "${PROJECT_NAME}_frontend"
     working_dir: /usr/src/app/frontend
     volumes:
@@ -63,7 +63,7 @@ services:
       MYSQL_ROOT_HOST: '%'
       SERVICE_NAME: mysql
     volumes:
-      - ./docker/mysql/dbdata/:/var/lib/mysql-files/
+      - ./docker/mysql/dbdata/:/var/lib/mysql/
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - private
