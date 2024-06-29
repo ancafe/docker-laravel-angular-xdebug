@@ -26,13 +26,14 @@ services:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
     container_name: "${PROJECT_NAME}_frontend"
-    working_dir: /usr/src/app/frontend
+    working_dir: /usr/src/app
     volumes:
-      - ./frontend/:/usr/src/app/frontend
+      - ./frontend/:/usr/src/app
     ports:
       - '4200:4200'
     command: >
       bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+    user: node
     networks:
       - private
 
